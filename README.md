@@ -38,7 +38,7 @@ Nesse primeiro desafio vamos criar algumas funcionalidades básicas que aprendem
 Você deverá criar a aplicação do zero utilizando o [Express](https://expressjs.com/), além de precisar configurar as seguintes ferramentas:
 
  - [X] Sucrase + Nodemon
- - [ ] ESLint + Prettier + EditorConfig
+ - [X] ESLint + Prettier + EditorConfig
  - [ ] Sequelize (Utilize PostgreSQL ou MySQL)
 
 ### **Funcionalidades**
