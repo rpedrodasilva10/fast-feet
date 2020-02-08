@@ -24,7 +24,7 @@
     "no-param-reassign": "off",
     "camelcase": "off",
     "no-unused-vars": [
-      "error",
+      "off",
       {
         "argsIgnorePattern": "next"
       }
