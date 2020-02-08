@@ -37,9 +37,9 @@ Nesse primeiro desafio vamos criar algumas funcionalidades básicas que aprendem
 
 Você deverá criar a aplicação do zero utilizando o [Express](https://expressjs.com/), além de precisar configurar as seguintes ferramentas:
 
- - [X] Sucrase + Nodemon
- - [X] ESLint + Prettier + EditorConfig
- - [ ] Sequelize (Utilize PostgreSQL ou MySQL)
+ - [X] [Sucrase](https://sucrase.io/) + [Nodemon](https://nodemon.io/)
+ - [X] [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) + [EditorConfig](https://editorconfig.org/)
+ - [X] [Sequelize](https://sequelize.org/)
 
 ### **Funcionalidades**
 
@@ -57,27 +57,29 @@ Para criar um seed utilize o comando:
 
 No arquivo gerado na pasta `src/database/seeds` adicione o código referente à criação de um usuário administrador:
 
-    const bcrypt = require("bcryptjs");
+```javascript
+const bcrypt = require("bcryptjs");
 
-    module.exports = {
-      up: QueryInterface => {
-        return QueryInterface.bulkInsert(
-          "users",
-          [
-            {
-              name: "Distribuidora FastFeet",
-              email: "admin@fastfeet.com",
-              password_hash: bcrypt.hashSync("123456", 8),
-              created_at: new Date(),
-              updated_at: new Date()
-            }
-          ],
-          {}
-        );
-      },
+module.exports = {
+  up: QueryInterface => {
+    return QueryInterface.bulkInsert(
+      'users',
+      [
+        {
+          name: 'Distribuidora FastFeet',
+          email: 'admin@fastfeet.com',
+          password_hash: bcrypt.hashSync('123456', 8),
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
+      {}
+    );
+  },
 
-      down: () => {}
-    };
+  down: () => { },
+};
+```
 
 Agora execute:
 
