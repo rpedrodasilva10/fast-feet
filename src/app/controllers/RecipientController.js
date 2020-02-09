@@ -82,5 +82,18 @@ class RecipientController {
     recipient = await recipient.update(req.body);
     return res.status(200).json({ recipient });
   }
+
+  async destroy(req, res) {
+    const { id } = req.params;
+    console.log(id);
+    let result = await Recipient.findByPk(id);
+
+    if (!result) {
+      return res.staus(404).json({ error: 'Recipient not found' });
+    }
+
+    result = await result.destroy();
+    return res.status(200).json(result);
+  }
 }
 export default new RecipientController();
