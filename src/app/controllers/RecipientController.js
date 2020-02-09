@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 import Recipient from '../models/Recipient';
-// store, update, list, destroy, show
+
 class RecipientController {
   static validateDefaultSchema(payload) {
     const schema = yup.object().shape({
@@ -85,7 +85,7 @@ class RecipientController {
 
   async destroy(req, res) {
     const { id } = req.params;
-    console.log(id);
+
     let result = await Recipient.findByPk(id);
 
     if (!result) {
