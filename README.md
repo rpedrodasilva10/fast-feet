@@ -87,8 +87,8 @@ Agora execute:
 
 Agora você tem um usuário na sua base de dados, utilize esse usuário para todos os logins que você fizer.
 
-- A autenticação deve ser feita utilizando JWT.
-- Realize a validação dos dados de entrada;
+[X] A autenticação deve ser feita utilizando JWT.
+[X] Realize a validação dos dados de entrada;
 
 ### 2. Gestão de destinatários
 

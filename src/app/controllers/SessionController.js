@@ -1,10 +1,30 @@
 import jwt from 'jsonwebtoken';
+import * as yup from 'yup';
 
 import User from '../models/User';
 import authConfig from '../../config/auth';
 
 class SessionController {
   async store(req, res) {
+    // try {
+    //   const json = JSON.parse(req.body);
+    // } catch (e) {
+    //   const json = null;
+    //   return res.status(400).json({ error: 'Invalid JSON' });
+    // }
+    const schema = yup.object().shape({
+      email: yup
+        .string()
+        .email()
+        .required(),
+      password: yup
+        .string()
+        .min(6)
+        .required(),
+    });
+    if (!(await schema.isValid(req.body))) {
+      return res.status(401).json({ error: 'Validation error' });
+    }
     const { email, password } = req.body;
 
     const user = await User.findOne({ where: { email } });
@@ -14,7 +34,7 @@ class SessionController {
     }
 
     if (!(await user.checkPassword(password))) {
-      res.status(401).json({ error: 'Password does not match' });
+      return res.status(401).json({ error: 'Password does not match' });
     }
     const { id, name } = user;
     return res.json({
