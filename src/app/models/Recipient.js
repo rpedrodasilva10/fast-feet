@@ -1,6 +1,4 @@
 import Sequelize, { Model } from 'sequelize';
-import bcrypt from 'bcrypt';
-import authConfig from '../../config/auth';
 
 class Recipient extends Model {
   static init(sequelize) {
