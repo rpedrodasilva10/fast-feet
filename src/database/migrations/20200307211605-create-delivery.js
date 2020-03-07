@@ -14,6 +14,13 @@ module.exports = {
         onDelete: 'SET NULL',
         allowNull: false,
       },
+      deliveryman_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'deliveries', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        allowNull: false,
+      },
       signature_id: {
         type: Sequelize.INTEGER,
         references: { model: 'files', key: 'id' },
@@ -30,11 +37,11 @@ module.exports = {
       },
       start_date: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: true,
       },
       end_date: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: true,
       },
       created_at: {
         type: Sequelize.DATE,
