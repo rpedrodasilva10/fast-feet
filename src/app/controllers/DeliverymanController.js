@@ -19,6 +19,32 @@ class DeliverymanController {
     }
     return res.json(deliveryman);
   }
+
+  async update(req, res) {
+    const { id } = req.params;
+
+    let deliveryman = await Deliveryman.findByPk(id);
+    if (!deliveryman) {
+      return res.status(404).json({ error: 'Deliveryman not found' });
+    }
+
+    deliveryman = await deliveryman.update(req.body);
+
+    return res.status(200).json({ deliveryman });
+  }
+
+  async destroy(req, res) {
+    const { id } = req.params;
+
+    let deliveryman = await Deliveryman.findByPk(id);
+
+    if (!deliveryman) {
+      return res.status(404).json({ error: 'Deliveryman not found' });
+    }
+
+    deliveryman = await deliveryman.destroy();
+    return res.status(200).json({ deliveryman });
+  }
 }
 
 export default new DeliverymanController();
