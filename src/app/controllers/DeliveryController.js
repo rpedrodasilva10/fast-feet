@@ -3,12 +3,27 @@ import Delivery from '../models/Delivery';
 
 class DeliveryController {
   async index(req, res) {
-    const deliveries = Delivery.findAll();
+    const deliveries = await Delivery.findAll();
 
     return res.json(deliveries);
   }
 
   async store(req, res) {
+    const schema = Yup.object().shape({
+      recipient_id: Yup.string()
+        .matches(/^[0-9]*$/)
+        .required(),
+      deliveryman_id: Yup.string()
+        .matches(/^[0-9]*$/)
+        .required(),
+      signature_id: Yup.string().matches(/^[0-9]*$/),
+      product: Yup.string().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(401).json({ error: 'Validation error' });
+    }
+
     const { recipient_id, deliveryman_id, signature_id, product } = req.body;
 
     const delivery = await Delivery.create({

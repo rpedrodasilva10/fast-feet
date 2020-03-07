@@ -1,3 +1,4 @@
+import * as Yup from 'yup';
 import Deliveryman from '../models/Deliveryman';
 
 class DeliverymanController {
@@ -8,6 +9,17 @@ class DeliverymanController {
   }
 
   async store(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      email: Yup.string()
+        .email()
+        .required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.json({ error: 'Validation error' });
+    }
+
     const { name, email } = req.body;
 
     const deliveryman = await Deliveryman.create({ name, email });
@@ -21,6 +33,14 @@ class DeliverymanController {
   }
 
   async update(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string(),
+      email: Yup.string().email(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.json({ error: 'Validation error' });
+    }
     const { id } = req.params;
 
     let deliveryman = await Deliveryman.findByPk(id);
