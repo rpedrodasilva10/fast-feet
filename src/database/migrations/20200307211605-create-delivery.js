@@ -28,11 +28,11 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: true,
       },
-      star_data: {
+      start_date: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      end_data: {
+      end_date: {
         type: Sequelize.DATE,
         allowNull: false,
       },
