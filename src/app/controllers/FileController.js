@@ -11,6 +11,12 @@ class FileController {
 
     return res.status(201).json({ message: 'File created', file });
   }
+
+  async index(req, res) {
+    const files = await File.findAll();
+
+    return res.status(200).json(files);
+  }
 }
 
 export default new FileController();
