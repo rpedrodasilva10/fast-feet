@@ -1,24 +1,16 @@
 import jwt from 'jsonwebtoken';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
 import User from '../models/User';
 import authConfig from '../../config/auth';
 
 class SessionController {
   async store(req, res) {
-    // try {
-    //   const json = JSON.parse(req.body);
-    // } catch (e) {
-    //   const json = null;
-    //   return res.status(400).json({ error: 'Invalid JSON' });
-    // }
-    const schema = yup.object().shape({
-      email: yup
-        .string()
+    const schema = Yup.object().shape({
+      email: Yup.string()
         .email()
         .required(),
-      password: yup
-        .string()
+      password: Yup.string()
         .min(6)
         .required(),
     });

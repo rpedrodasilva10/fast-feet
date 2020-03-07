@@ -1,24 +1,21 @@
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
 import Recipient from '../models/Recipient';
 
 class RecipientController {
   static validateDefaultSchema(payload) {
-    const schema = yup.object().shape({
-      name: yup.string().required(),
-      state: yup
-        .string()
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      state: Yup.string()
         .min(2)
         .required(),
-      street: yup.string().required(),
-      street_number: yup
-        .number()
+      street: Yup.string().required(),
+      street_number: Yup.number()
         .integer()
         .required(),
-      city: yup.string().required(),
-      complement: yup.string(),
-      zipcode: yup
-        .string()
+      city: Yup.string().required(),
+      complement: Yup.string(),
+      zipcode: Yup.string()
         .length(5)
         .matches(/^[0-9]*$/)
         .required(),
