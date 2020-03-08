@@ -8,16 +8,22 @@ import Deliveryman from '../models/Deliveryman';
 
 class DeliveryController {
   async index(req, res) {
-    const deliveries = await Delivery.findAll();
+    const deliveries = await Delivery.findAll({
+      order: ['id'],
+    });
 
     return res.json(deliveries);
   }
 
   async store(req, res) {
     const schema = Yup.object().shape({
-      recipient_id: Yup.number().required(),
-      deliveryman_id: Yup.number().required(),
-      signature_id: Yup.number(),
+      recipient_id: Yup.number()
+        .integer()
+        .required(),
+      deliveryman_id: Yup.number()
+        .integer()
+        .required(),
+      signature_id: Yup.number().integer(),
       product: Yup.string().required(),
     });
 
@@ -59,6 +65,26 @@ class DeliveryController {
     }
 
     delivery = await delivery.destroy();
+
+    return res.status(200).json(delivery);
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+    const { deliveryman_id, product, canceled_at } = req.body;
+
+    let delivery = await Delivery.findByPk(id);
+
+    if (!delivery) {
+      return res.status(404).json({ error: 'Delivery not found' });
+    }
+
+    delivery = await delivery.update({
+      ...delivery,
+      deliveryman_id,
+      product,
+      canceled_at,
+    });
 
     return res.status(200).json(delivery);
   }
