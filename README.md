@@ -144,7 +144,7 @@ Obs.: Essa funcionalidade é para administradores autenticados na aplicação.
 
 Apesar do entregador estar cadastrado, ele não é independente dentro da plataforma, e você deve cadastrar encomendas para os entregadores.
 
-- [ ] Nessa funcionalidade criaremos um cadastro de encomendas por entregador, a encomenda possui os campos:
+- [x] Nessa funcionalidade criaremos um cadastro de encomendas por entregador, a encomenda possui os campos:
 
 - id (id da entrega)
 - recipient_id (referência ao destinatário);
@@ -161,9 +161,9 @@ Apesar do entregador estar cadastrado, ele não é independente dentro da plataf
 
 * [ ] A **data de término** da entrega deve ser cadastrada quando o entregador finalizar a entrega:
 
-* [ ] Os campos **recipient_id** e **deliveryman_id** devem ser cadastrados no momento que for cadastrada a encomenda.
+* [x] Os campos **recipient_id** e **deliveryman_id** devem ser cadastrados no momento que for cadastrada a encomenda.
 
-* [ ] Quando a encomenda é **cadastrada** para um entregador, o entregador recebe um e-mail com detalhes da encomenda, com nome do produto e uma mensagem informando-o que o produto já está disponível para a retirada.
+* [x] Quando a encomenda é **cadastrada** para um entregador, o entregador recebe um e-mail com detalhes da encomenda, com nome do produto e uma mensagem informando-o que o produto já está disponível para a retirada.
 
 ** Crie rotas para: **
 

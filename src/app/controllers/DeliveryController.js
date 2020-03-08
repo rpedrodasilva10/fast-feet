@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
-import Mail from '../../lib/Mail';
-
+import Queue from '../../lib/Queue';
+import DeliverycreationMail from '../jobs/DeliverycreationMail';
 import Delivery from '../models/Delivery';
 import Recipient from '../models/Recipient';
 import Deliveryman from '../models/Deliveryman';
@@ -39,16 +39,13 @@ class DeliveryController {
     );
 
     const { name: recipient_name } = await Recipient.findByPk(recipient_id);
-    await Mail.sendMail({
-      to: `${deliveryman_name} <${email}>`,
-      subject: 'Mercadoria para retirada',
-      template: 'deliverycreation',
-      context: {
-        deliveryman_name,
-        product,
-        recipient_name,
-      },
+    Queue.add(DeliverycreationMail.key, {
+      deliveryman_name,
+      email,
+      recipient_name,
+      product,
     });
+
     return res.status(201).json(delivery);
   }
 
