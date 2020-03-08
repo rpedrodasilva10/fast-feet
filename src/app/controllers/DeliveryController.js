@@ -88,6 +88,18 @@ class DeliveryController {
 
     return res.status(200).json(delivery);
   }
+
+  async show(req, res) {
+    const { id } = req.params;
+
+    const delivery = await Delivery.findByPk(id);
+
+    if (!delivery) {
+      return res.status(404).json({ error: 'Delivery not found' });
+    }
+
+    return res.status(200).json(delivery);
+  }
 }
 
 export default new DeliveryController();

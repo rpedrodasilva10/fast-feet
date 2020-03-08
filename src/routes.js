@@ -23,23 +23,26 @@ routes.use(authMiddleware);
 
 // Recipients
 routes.get('/recipients', RecipientController.index);
-routes.post('/recipients', RecipientController.store);
 routes.get('/recipients/:id', RecipientController.show);
+routes.post('/recipients', RecipientController.store);
 routes.put('/recipients/:id', RecipientController.update);
 routes.delete('/recipients/:id', RecipientController.destroy);
 
 // Files
 routes.post('/files', upload.single('file'), FileController.store);
 routes.get('/files', FileController.index);
+routes.get('/files/:id', FileController.show);
 
 // Deliveryman
 routes.get('/deliverymans', DeliverymanController.index);
+routes.get('/deliverymans/:id', DeliverymanController.show);
 routes.post('/deliverymans', DeliverymanController.store);
 routes.put('/deliverymans/:id', DeliverymanController.update);
 routes.delete('/deliverymans/:id', DeliverymanController.destroy);
 
 // Delivery
 routes.get('/deliveries', DeliveryController.index);
+routes.get('/deliveries/:id', DeliveryController.show);
 routes.post('/deliveries', DeliveryController.store);
 routes.put('/deliveries/:id', DeliveryController.update);
 routes.delete('/deliveries/:id', DeliveryController.destroy);
