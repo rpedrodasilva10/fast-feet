@@ -167,10 +167,10 @@ Apesar do entregador estar cadastrado, ele não é independente dentro da plataf
 
 ** Crie rotas para: **
 
-- [ ] listagem
-- [ ] cadastro
-- [ ] atualização
-- [ ] remoção
+- [x] listagem
+- [x] cadastro
+- [x] atualização
+- [x] remoção
 
 das encomendas
 
