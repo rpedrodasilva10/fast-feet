@@ -55,6 +55,6 @@ routes.get('/deliverymans/:id/deliveries', DeliverymanDeliveryController.index);
 // DeliverymanDelivery
 routes.get('/deliverymans/:id/deliveries', DeliverymanDeliveryController.index);
 
-routes.get('/deliverymans/:id/deliveries/done', DoneDeliveryController.index);
+routes.get('/deliverymans/:id/done-deliveries', DoneDeliveryController.index);
 
 export default routes;
