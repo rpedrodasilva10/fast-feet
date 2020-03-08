@@ -1,5 +1,9 @@
 import * as Yup from 'yup';
+
+import Mail from '../../lib/Mail';
+
 import Delivery from '../models/Delivery';
+import Deliveryman from '../models/Deliveryman';
 
 class DeliveryController {
   async index(req, res) {
@@ -10,13 +14,9 @@ class DeliveryController {
 
   async store(req, res) {
     const schema = Yup.object().shape({
-      recipient_id: Yup.string()
-        .matches(/^[0-9]*$/)
-        .required(),
-      deliveryman_id: Yup.string()
-        .matches(/^[0-9]*$/)
-        .required(),
-      signature_id: Yup.string().matches(/^[0-9]*$/),
+      recipient_id: Yup.number().required(),
+      deliveryman_id: Yup.number().required(),
+      signature_id: Yup.number(),
       product: Yup.string().required(),
     });
 
@@ -33,6 +33,14 @@ class DeliveryController {
       product,
     });
 
+    const { email, name } = await Deliveryman.findByPk(deliveryman_id);
+
+    Mail.sendMail({
+      to: `${name} <${email}>`,
+      subject: 'Você tem uma mercadoria para retirada',
+      text: `Olá ${name}, há um novo produto para entrega.
+        Por favor, agende os horários. `,
+    });
     return res.status(201).json(delivery);
   }
 
