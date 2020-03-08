@@ -34,17 +34,20 @@ class DeliveryController {
     });
 
     return res.status(201).json(delivery);
-    /**
-     *  A data de início deve ser cadastrada assim que for feita a retirada do produto pelo entregador,
-     *  e as retiradas só podem ser feitas entre as 08:00 e 18:00h.
+  }
 
- A data de término da entrega deve ser cadastrada quando o entregador finalizar a entrega:
+  async destroy(req, res) {
+    const { id } = req.params;
 
- Os campos recipient_id e deliveryman_id devem ser cadastrados no momento que for cadastrada a encomenda.
+    let delivery = await Delivery.findByPk(id);
 
- Quando a encomenda é cadastrada para um entregador, o entregador recebe um e-mail
- com detalhes da encomenda, com nome do produto e uma mensagem informando-o que o produto já está disponível para a retirada.
-     */
+    if (!delivery) {
+      return res.status(404).json({ error: 'Delivery not found' });
+    }
+
+    delivery = await delivery.destroy();
+
+    return res.status(200).json(delivery);
   }
 }
 
