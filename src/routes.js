@@ -11,6 +11,7 @@ import DeliverymanController from './app/controllers/DeliverymanController';
 import DeliveryController from './app/controllers/DeliveryController';
 import DeliverymanDeliveryController from './app/controllers/DeliverymanDeliveryController';
 import DoneDeliveryController from './app/controllers/DoneDeliveryController';
+import StartDeliveryController from './app/controllers/StartDeliveryController';
 
 const upload = multer(multerConfig);
 
@@ -55,6 +56,14 @@ routes.get('/deliverymans/:id/deliveries', DeliverymanDeliveryController.index);
 // DeliverymanDelivery
 routes.get('/deliverymans/:id/deliveries', DeliverymanDeliveryController.index);
 
+// DoneDelivery
 routes.get('/deliverymans/:id/done-deliveries', DoneDeliveryController.index);
+
+// StartAndFinishController
+routes.post(
+  '/deliverymans/:deliveryman_id/deliveries/:delivery_id/start',
+  StartDeliveryController.store
+);
+// '/deliveryman/:deliveryman_id/deliveries/:delivery_id
 
 export default routes;

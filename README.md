@@ -157,7 +157,7 @@ Apesar do entregador estar cadastrado, ele não é independente dentro da plataf
 - created_at;
 - updated_at;
 
-* [ ] A **data de início** deve ser cadastrada assim que for feita a retirada do produto pelo entregador, e as retiradas só podem ser feitas entre as 08:00 e 18:00h.
+* [x] A **data de início** deve ser cadastrada assim que for feita a retirada do produto pelo entregador, e as retiradas só podem ser feitas entre as 08:00 e 18:00h.
 
 * [ ] A **data de término** da entrega deve ser cadastrada quando o entregador finalizar a entrega:
 
@@ -184,7 +184,7 @@ Abaixo estão descritas as funcionalidades que você deve adicionar em sua aplic
 
 - [x] Para que o entregador possa visualizar suas encomendas, ele deverá informar apenas seu ID de cadastro (ID do entregador no banco de dados). Essa funcionalidade deve retornar as encomendas atribuidas a ele, que **não estejam entregues ou canceladas**;
 
-- [ ] Permita também que ele liste apenas as encomendas que já foram **entregues** por ele, com base em seu ID de cadastro;
+- [x] Permita também que ele liste apenas as encomendas que já foram **entregues** por ele, com base em seu ID de cadastro;
 
 Exemplo de requisição:
 
