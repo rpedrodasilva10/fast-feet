@@ -64,7 +64,6 @@ routes.post(
 );
 
 // EndDelivery
-
 routes.post(
   '/deliverymans/:deliveryman_id/deliveries/:delivery_id/finish',
   upload.single('file'),
