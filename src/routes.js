@@ -12,6 +12,7 @@ import DeliveryController from './app/controllers/DeliveryController';
 import DeliverymanDeliveryController from './app/controllers/DeliverymanDeliveryController';
 import DoneDeliveryController from './app/controllers/DoneDeliveryController';
 import StartDeliveryController from './app/controllers/StartDeliveryController';
+import EndDeliveryController from './app/controllers/EndDeliveryController';
 
 const upload = multer(multerConfig);
 
@@ -53,17 +54,20 @@ routes.delete('/deliveries/:id', DeliveryController.destroy);
 // DeliverymanDelivery
 routes.get('/deliverymans/:id/deliveries', DeliverymanDeliveryController.index);
 
-// DeliverymanDelivery
-routes.get('/deliverymans/:id/deliveries', DeliverymanDeliveryController.index);
-
 // DoneDelivery
 routes.get('/deliverymans/:id/done-deliveries', DoneDeliveryController.index);
 
-// StartAndFinishController
+// StartDelivery
 routes.post(
   '/deliverymans/:deliveryman_id/deliveries/:delivery_id/start',
   StartDeliveryController.store
 );
-// '/deliveryman/:deliveryman_id/deliveries/:delivery_id
 
+// EndDelivery
+
+routes.post(
+  '/deliverymans/:deliveryman_id/deliveries/:delivery_id/finish',
+  upload.single('file'),
+  EndDeliveryController.store
+);
 export default routes;
