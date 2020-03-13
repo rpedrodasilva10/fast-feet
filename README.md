@@ -157,7 +157,7 @@ Apesar do entregador estar cadastrado, ele não é independente dentro da plataf
 
 * [x] A **data de início** deve ser cadastrada assim que for feita a retirada do produto pelo entregador, e as retiradas só podem ser feitas entre as 08:00 e 18:00h.
 
-* [ ] A **data de término** da entrega deve ser cadastrada quando o entregador finalizar a entrega:
+* [x] A **data de término** da entrega deve ser cadastrada quando o entregador finalizar a entrega:
 
 * [x] Os campos **recipient_id** e **deliveryman_id** devem ser cadastrados no momento que for cadastrada a encomenda.
 
@@ -207,9 +207,9 @@ A tabela `delivery_problems` deve conter os seguintes campos:
 - created_at;
 - updated_at;
 
-Crie uma rota para a distribuidora listar todas as entregas com algum problema;
+- [x] Crie uma rota para a distribuidora listar todas as entregas com algum problema;
 
-Crie uma rota para listar todos os problemas de uma encomenda baseado no ID da encomenda.
+- [x] Crie uma rota para listar todos os problemas de uma encomenda baseado no ID da encomenda.
 
 Exemplo de requisição:
 
@@ -217,7 +217,7 @@ Exemplo de requisição:
 GET https://fastfeet.com/delivery/2/problems
 ```
 
-Crie uma rota para o entregador cadastrar problemas na entrega apenas informando seu ID de cadastro (ID da encomenda no banco de dados);
+- [x] Crie uma rota para o entregador cadastrar problemas na entrega apenas informando seu ID de cadastro (ID da encomenda no banco de dados);
 
 Exemplo de requisição:
 
@@ -225,7 +225,7 @@ Exemplo de requisição:
 POST https://fastfeet.com/delivery/3/problems
 ```
 
-Crie uma rota para a distribuidora cancelar uma entrega baseado no ID do problema. Esse cancelamento pode acontecer devido a gravidade do problema da entrega, por exemplo, em caso de perda da encomenda.
+- [x] Crie uma rota para a distribuidora cancelar uma entrega baseado no ID do problema. Esse cancelamento pode acontecer devido a gravidade do problema da entrega, por exemplo, em caso de perda da encomenda.
 
 Exemplo de requisição:
 
