@@ -14,7 +14,7 @@ class StartDeliveryController {
     }
 
     if (delivery.deliveryman_id !== Number(deliveryman_id)) {
-      return res.status(404).json({ error: `Delivery of another worker` });
+      return res.status(404).json({ error: 'Delivery of another worker' });
     }
 
     if (delivery.start_date) {
